@@ -13,6 +13,9 @@ $(document).ready(function() {
 
 	$("#attack").hide();
 	$("#restart").hide();
+	$("#yourFighter").hide();
+	$("#currFighting").hide();
+	$("#opponentList").hide();
 
 
 	function reset() {
@@ -135,6 +138,10 @@ $(document).ready(function() {
 
 		eraseRow("#fighterRow1");
 		eraseRow("#fighterRow2");
+
+		$("#yourFighter").show();
+		$("#currFighting").show();
+		$("#opponentList").show();
 
 	});
 
