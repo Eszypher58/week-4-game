@@ -4,6 +4,7 @@ $(document).ready(function() {
 	var fighterNameArray = ["blastoise", "charizard", "pidgeot", "venusaur"];
 	var opponentNameArray = [];
 	var isPlaying = false;
+	var isDefeated = false;
 	var player = null;
 	var opponent = null;
 	var playerAttack = 0;
@@ -22,14 +23,15 @@ $(document).ready(function() {
 		fighterNameArray = ["blastoise", "charizard", "pidgeot", "venusaur"];
 		opponentNameArray = [];
 		isPlaying = false;
+		isDefeated = false;
 		player = null;
 		opponent = null;
 		playerAttack = 0;
 
-		blastoiseObj = new Fighter("Blastoise", 100, 5, 5, fightImgUrlArray[0]);
-		charizardObj = new Fighter("Charizard", 110, 6, 6, fightImgUrlArray[1]);
-		pidgeotObj = new Fighter("Pidgeot", 120, 7, 7, fightImgUrlArray[2]);
-		venusaurObj = new Fighter("Venusaur", 130, 8, 8, fightImgUrlArray[3]);
+		blastoiseObj = new Fighter("Blastoise", 120, 8, 5, fightImgUrlArray[0]);
+		charizardObj = new Fighter("Charizard", 100, 6, 5, fightImgUrlArray[1]);
+		pidgeotObj = new Fighter("Pidgeot", 150, 7, 20, fightImgUrlArray[2]);
+		venusaurObj = new Fighter("Venusaur", 180, 8, 25, fightImgUrlArray[3]);
 
 	//testing
 	//console.log(blastoiseObj.hp);
@@ -73,10 +75,10 @@ $(document).ready(function() {
 	}
 
 	//instantiate char1,2,3,4
-	var blastoiseObj = new Fighter("Blastoise", 100, 5, 5, fightImgUrlArray[0]);
-	var charizardObj = new Fighter("Charizard", 110, 6, 6, fightImgUrlArray[1]);
-	var pidgeotObj = new Fighter("Pidgeot", 120, 7, 7, fightImgUrlArray[2]);
-	var venusaurObj = new Fighter("Venusaur", 130, 8, 8, fightImgUrlArray[3]);
+	var blastoiseObj = new Fighter("Blastoise", 120, 8, 5, fightImgUrlArray[0]);
+	var charizardObj = new Fighter("Charizard", 100, 6, 5, fightImgUrlArray[1]);
+	var pidgeotObj = new Fighter("Pidgeot", 150, 7, 20, fightImgUrlArray[2]);
+	var venusaurObj = new Fighter("Venusaur", 180, 8, 25, fightImgUrlArray[3]);
 
 	//testing
 	//console.log(blastoiseObj.hp);
@@ -252,7 +254,7 @@ $(document).ready(function() {
 
 	$("#attack").click(function(){
 
-		if (isPlaying) {
+		if (isPlaying && !isDefeated) {
 		//$("#result").html("hi");
 
 		attack(player,opponent);
@@ -273,14 +275,28 @@ $(document).ready(function() {
 		}
 
 
-		} 
+		}  
 
-		//else {
+		else {
 
 			console.log("round should end");
 			//remove opponent from defender...
 			//removeOpponent();
-		//}
+
+			if (opponentNameArray.length === 0) {
+
+				$("#resultOne").html("You have vanquished all foes!");
+				$("#resultTwo").html("Press reset to start over...");
+
+			} else if (isDefeated) {
+
+			} else{
+
+				$("#resultOne").html("There is no one to fight!");
+				$("#resultTwo").html("Pick an opponent");
+
+			}
+		}
 
 	});
 
@@ -314,7 +330,9 @@ $(document).ready(function() {
 
 			lineOne = "You have been defeated!!!"
 			lineTwo = "select reset to start over..."
-			isPlaying = false;
+			isDefeated = true;
+			//show reset button
+
 
 		} else if (opponentObj.hp <= 0 ) {
 
