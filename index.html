@@ -1,0 +1,180 @@
+<!doctype html>
+
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Bootstrap Protfolio</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+	</head>
+
+	<body>
+
+		<div class="container-fluid">
+			
+			<div class="row text-center">
+				
+				<div class="col-md-12">
+					
+					<h1>The Game</h1>
+
+				</div>
+
+			</div>
+
+			<div class="row text-center">
+
+				<div class="row" id="fighterRow1">
+					
+					<div class="col-md-12">
+						
+						<p>select your fighter</p>
+
+					</div>
+
+				</div>
+				
+				<div class="row text-center" id="fighterRow2">
+					
+					<div class="col-md-3">
+						
+						
+						<img class="fighter" id="blastoise" src="assets/images/blastoise.jpg">
+						<p id="charOneName"></p>
+						<p id="charOneHP"></p>
+
+					</div>
+
+					<div class="col-md-3">
+						
+						
+						<img class="fighter" id="charizard" src="assets/images/charizard.jpg">
+						<p id="charTwoName"></p>
+						<p id="charTwoHP"></p>
+
+					</div>
+
+					<div class="col-md-3">
+						
+						
+						<img class="fighter" id="pidgeot" src="assets/images/pidgeot.jpg">
+						<p id="charThreeName"></p>
+						<p id="charThreeHP"></p>
+
+					</div>
+
+					<div class="col-md-3">
+						
+						
+						<img class="fighter" id="venusaur" src="assets/images/venusaur.jpg">
+						<p id="charFourName"></p>
+						<p id="charFourHP"></p>
+
+					</div>
+
+				</div>
+
+				<div class="row text-center">
+
+					<div class="col-md-4" id="yourFighter">
+						
+						<p>Your fighter</p>
+
+					</div>
+
+					<div class="col-md-4" id="currFighting">
+						
+						<p>Defender</p>
+						<!--
+						<img class="defender" id="" src="">
+						<p id="defenderName"></p>
+						<p id="defenderHP"></p>
+						-->
+					</div>
+
+					<div class="col-md-4" id="opponentList">
+						
+						<p>Choose Your opponent</p>
+						<div class="opponent">
+							
+						</div>
+						<div class="opponent">
+							
+						</div>
+						<div class="opponent">
+							
+						</div>
+
+	<!--
+						<div class="opponent">
+							<img class="opp-img" id="opp0" src="">
+							<div id="opp0Name"></div>
+						</div>
+						
+						<div class="opponent">
+							<img class="opp-img" id="opp1" src="">
+							<div id="opp1Name"></div>
+						</div>
+
+						<div class="opponent">
+							<img class="opp-img" id="opp2" src="">
+							<div id="opp2Name"></div>
+						</div>
+
+						
+						<img class="opponent" id="opp1" src="">
+						<p id="opp1Name"></p>
+					
+						<img class="opponent" id="opp2" src="">
+						<p id="opp2Name"></p>
+						-->
+						
+
+					</div>
+
+				</div>
+
+				<div class="row text-center">
+					
+					<div class="col-md-12">
+
+						<p id="resultOne"></p>
+						<p id="resultTwo"></p>
+
+					</div>
+
+				</div>
+
+				<div class="row text-center">
+					
+					<div class="col-md-6">
+
+						<button id="attack">Attack</button>
+
+					</div>
+
+					<div class="col-md-6">
+
+						<button id="restart">Reset</button>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+	<script type="text/javascript" src="assets/javascript/game.js">
+	</script>
+
+</html>
