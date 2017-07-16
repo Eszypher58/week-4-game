@@ -11,8 +11,8 @@ $(document).ready(function() {
 	var originalPage = $("body").html();
 	//console.log(originalPage);
 
-	//$(".opponent").hide();
-	//$(".defender").hide();
+	$("#attack").hide();
+	$("#restart").hide();
 
 
 	function reset() {
@@ -28,7 +28,7 @@ $(document).ready(function() {
 		opponent = null;
 		playerAttack = 0;
 
-		blastoiseObj = new Fighter("Blastoise", 120, 8, 5, fightImgUrlArray[0]);
+		blastoiseObj = new Fighter("Blastoise", 170, 8, 5, fightImgUrlArray[0]);
 		charizardObj = new Fighter("Charizard", 100, 6, 5, fightImgUrlArray[1]);
 		pidgeotObj = new Fighter("Pidgeot", 150, 7, 20, fightImgUrlArray[2]);
 		venusaurObj = new Fighter("Venusaur", 180, 8, 25, fightImgUrlArray[3]);
@@ -58,6 +58,8 @@ $(document).ready(function() {
 		$("#charThreeHP").html("HP: " + fighterObj.pidgeot.hp);
 		$("#charFourHP").html("HP: " + fighterObj.venusaur.hp);
 
+		$("#attack").hide();
+		$("#restart").hide();
 	}
 
 
@@ -75,7 +77,7 @@ $(document).ready(function() {
 	}
 
 	//instantiate char1,2,3,4
-	var blastoiseObj = new Fighter("Blastoise", 120, 8, 5, fightImgUrlArray[0]);
+	var blastoiseObj = new Fighter("Blastoise", 170, 8, 5, fightImgUrlArray[0]);
 	var charizardObj = new Fighter("Charizard", 100, 6, 5, fightImgUrlArray[1]);
 	var pidgeotObj = new Fighter("Pidgeot", 150, 7, 20, fightImgUrlArray[2]);
 	var venusaurObj = new Fighter("Venusaur", 180, 8, 25, fightImgUrlArray[3]);
@@ -203,7 +205,7 @@ $(document).ready(function() {
 	
 		};
 
-		$(".opponent").show();
+		$("#attack").show();
 
 	};
 
@@ -257,22 +259,33 @@ $(document).ready(function() {
 		if (isPlaying && !isDefeated) {
 		//$("#result").html("hi");
 
-		attack(player,opponent);
-		displayResultText(player, opponent);
-		if (checkRoundEnd(player,opponent)) {
+		//attack(player,opponent);
+			updateHP(player, opponent);
+			
+			displayResultText(player, opponent);
+			updateAttack(player);
+			if (checkRoundEnd(player,opponent)) {
 
-			removeOpponent();
+				if (opponent.hp >= 0) {
 
-			console.log(opponentNameArray.length);
+				} else {
+				
+					removeOpponent();
 
-			if (opponentNameArray.length === 0) {
+					console.log(opponentNameArray.length);
 
-				$("#resultOne").html("You have vanquished all foes!");
-				$("#resultTwo").html("Press reset to start over...");
+					if (opponentNameArray.length === 0) {
+
+						$("#resultOne").html("You have vanquished all foes!");
+						$("#resultTwo").html("Press reset to start over...");
+
+						$("#restart").show();
+
+					}
+
+				}
 
 			}
-
-		}
 
 
 		}  
@@ -287,6 +300,7 @@ $(document).ready(function() {
 
 				$("#resultOne").html("You have vanquished all foes!");
 				$("#resultTwo").html("Press reset to start over...");
+				$("#restart").show();
 
 			} else if (isDefeated) {
 
@@ -299,23 +313,6 @@ $(document).ready(function() {
 		}
 
 	});
-
-	function attack(playerObj, opponentObj) {
-		//console.log(playerObj);
-		//console.log(opponentObj);
-		//console.log(opponentObj.name);
-		//console.log(opponentObj.hp);
-
-		//console.log(playerObj.hp);
-
-		//displayResultText(playerObj, opponentObj);
-
-		//console.log(playerAttack);
-
-		updateHP(playerObj, opponentObj);
-		updateAttack(playerObj);
-
-	}
 
 	function displayResultText(playerObj, opponentObj) {
 
@@ -331,6 +328,8 @@ $(document).ready(function() {
 			lineOne = "You have been defeated!!!"
 			lineTwo = "select reset to start over..."
 			isDefeated = true;
+			$("#restart").show();
+
 			//show reset button
 
 
