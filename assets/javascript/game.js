@@ -63,6 +63,10 @@ $(document).ready(function() {
 
 		$("#attack").hide();
 		$("#restart").hide();
+		$("#yourFighter").hide();
+		$("#currFighting").hide();
+		$("#opponentList").hide();
+
 	}
 
 
