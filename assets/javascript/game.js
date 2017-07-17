@@ -32,7 +32,7 @@ $(document).ready(function() {
 		//playerAttack = 0;
 
 		blastoiseObj = new Fighter("Blastoise", 170, 8, 5, fightImgUrlArray[0]);
-		charizardObj = new Fighter("Charizard", 100, 6, 5, fightImgUrlArray[1]);
+		charizardObj = new Fighter("Charizard", 110, 6, 5, fightImgUrlArray[1]);
 		pidgeotObj = new Fighter("Pidgeot", 150, 7, 20, fightImgUrlArray[2]);
 		venusaurObj = new Fighter("Venusaur", 180, 8, 25, fightImgUrlArray[3]);
 
@@ -52,10 +52,10 @@ $(document).ready(function() {
 		$("#charFourName").html(fighterObj.venusaur.name);
 
 		//setup fighter's HP display
-		$("#charOneHP").html("HP: " + fighterObj.blastoise.hp);
-		$("#charTwoHP").html("HP: " + fighterObj.charizard.hp);
-		$("#charThreeHP").html("HP: " + fighterObj.pidgeot.hp);
-		$("#charFourHP").html("HP: " + fighterObj.venusaur.hp);
+		$("#charOneHP").html("HP: <span class='hitPoint'>" + fighterObj.blastoise.hp + "</span>");
+		$("#charTwoHP").html("HP: <span class='hitPoint'>" + fighterObj.charizard.hp + "</span>");
+		$("#charThreeHP").html("HP: <span class='hitPoint'>" + fighterObj.pidgeot.hp + "</span>");
+		$("#charFourHP").html("HP: <span class='hitPoint'>" + fighterObj.venusaur.hp + "</span>");
 
 		//hide elements not used in initial state
 		$("#attack").hide();
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
 	//instantiate char1,2,3,4
 	var blastoiseObj = new Fighter("Blastoise", 170, 8, 5, fightImgUrlArray[0]);
-	var charizardObj = new Fighter("Charizard", 100, 6, 5, fightImgUrlArray[1]);
+	var charizardObj = new Fighter("Charizard", 110, 6, 5, fightImgUrlArray[1]);
 	var pidgeotObj = new Fighter("Pidgeot", 150, 7, 20, fightImgUrlArray[2]);
 	var venusaurObj = new Fighter("Venusaur", 180, 8, 25, fightImgUrlArray[3]);
 
@@ -102,10 +102,10 @@ $(document).ready(function() {
 	$("#charFourName").html(fighterObj.venusaur.name);
 
 	//setup fighter's HP display
-	$("#charOneHP").html("HP: " + fighterObj.blastoise.hp);
-	$("#charTwoHP").html("HP: " + fighterObj.charizard.hp);
-	$("#charThreeHP").html("HP: " + fighterObj.pidgeot.hp);
-	$("#charFourHP").html("HP: " + fighterObj.venusaur.hp);
+	$("#charOneHP").html("HP: <span class='hitPoint'>" + fighterObj.blastoise.hp + "</span>");
+	$("#charTwoHP").html("HP: <span class='hitPoint'>" + fighterObj.charizard.hp + "</span>");
+	$("#charThreeHP").html("HP: <span class='hitPoint'>" + fighterObj.pidgeot.hp + "</span>");
+	$("#charFourHP").html("HP: <span class='hitPoint'>" + fighterObj.venusaur.hp + "</span>");
 
 	//when a fighter is selected, move the selected fighter to #yourFighter section and the remainder to #opponetList section
 	$(".fighter").click(function(){
@@ -153,7 +153,7 @@ $(document).ready(function() {
 		p.attr("id", "charName" + stringName);
 		$(appendTo).first().append(p);
 		p = $("<p>");
-		p.html("HP: " + fighterObj[stringName].hp);
+		p.html("HP: <span class='hitPoint'>" + fighterObj[stringName].hp + "</span>");
 		p.attr("id", "charHP" + stringName);
 		$(appendTo).first().append(p);
 		//player = fighterObj[stringName];
@@ -285,15 +285,20 @@ $(document).ready(function() {
 
 		}  else {
 
-			//This case handles if user click on attack button at the end of the game. When user isnt playing (isPlaying = false), but is not deeated, and user keeps on clicking attack button
-			if (opponentNameArray.length === 0) {
+			//This case handles if user keep on clicking on attack button at the end of the game. 			
+			
+			if (opponentNameArray.length === 0 && !isDefeated) {
+
 
 				$("#resultOne").html("You have vanquished all foes!");
 				$("#resultTwo").html("Press reset to start over...");
 				$("#restart").show();
 
 			} else if (isDefeated) {
-				//if defeated, dont do anything, this case is taken care of by displayResultText
+				
+				$("#resultOne").html("You have been defeated!!!");
+				$("#resultTwo").html("select reset to start over...");
+
 			} else {
 				//tell the player to select an opponent
 				$("#resultOne").html("There is no one to fight!");
@@ -331,9 +336,9 @@ $(document).ready(function() {
 
 		} else {
 
-			lineOne = playerObj.name + " attacks " + opponentObj.name + " for " + playerObj.attack + " damage.";
+			lineOne = playerObj.name + " attacks " + opponentObj.name + " for <span class='damage'>" + playerObj.attack + "</span> damage.";
 
-			lineTwo = opponentObj.name + " counter attacks " + playerObj.name + " for " + opponentObj.counter + " damage.";
+			lineTwo = opponentObj.name + " counter attacks " + playerObj.name + " for <span class='damage'>" + opponentObj.counter + "</span> damage.";
 
 		}
 
@@ -351,8 +356,8 @@ $(document).ready(function() {
 		opponentObj.hp = opponentObj.hp - playerObj.attack;
 		playerObj.hp = playerObj.hp - opponentObj.counter;
 
-		$(playerHPSelector).html(playerObj.hp);
-		$(opponentHPSelector).html(opponentObj.hp);
+		$(playerHPSelector).html("HP: <span class='hitPoint'>" +playerObj.hp + "</span>");
+		$(opponentHPSelector).html("HP: <span class='hitPoint'>" + opponentObj.hp + "</span>");
 
 	}
 
@@ -391,7 +396,6 @@ $(document).ready(function() {
 
 		console.log("clicked on reset");
 		reset();
-
 
 	})
 
